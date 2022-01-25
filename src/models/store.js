@@ -1,4 +1,4 @@
-import sequelize from '../loaders/database.js';
+import sequelize from 'loaders/database.js';
 
 async function findAll() {
 	try {

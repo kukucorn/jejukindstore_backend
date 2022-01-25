@@ -1,6 +1,6 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
-import { database, user, password, host, dialect } from '../config/database.js';
+import { database, user, password, host, dialect } from 'configs/database.js';
 
 const sequelize = new Sequelize(database, user, password, {
 	host,

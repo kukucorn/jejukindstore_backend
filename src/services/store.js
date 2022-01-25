@@ -1,7 +1,7 @@
-import storeModel from '../models/store.js';
+import { StoreModel } from 'models';
 
 async function findAll() {
-	return await storeModel.findAll();
+	return await StoreModel.findAll();
 }
 
 export default { findAll };
