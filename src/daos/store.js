@@ -1,8 +1,8 @@
-import sequelize from 'loaders/database.js';
+import { Store } from 'models';
 
 async function findAll() {
 	try {
-		return await sequelize.models.Store.findAll();
+		return await Store.findAll();
 	} catch (error) {
 		console.log(error);
 	}
