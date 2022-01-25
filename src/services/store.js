@@ -1,7 +1,7 @@
-import { StoreModel } from 'models';
+import { StoreDao } from 'daos';
 
 async function findAll() {
-	return await StoreModel.findAll();
+	return await StoreDao.findAll();
 }
 
 export default { findAll };
