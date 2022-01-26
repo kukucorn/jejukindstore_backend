@@ -12,6 +12,7 @@ module.exports = {
 					daos: './src/daos',
 					loaders: './src/loaders',
 					models: './src/models',
+					public_data: './src/public_data',
 					services: './src/services',
 				},
 			},
