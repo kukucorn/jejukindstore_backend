@@ -1,8 +1,10 @@
-import { Store } from 'models';
+import { Store, StoreLocation } from 'models';
 
 async function findAll() {
 	try {
-		return await Store.findAll();
+		return await Store.findAll({
+			include: { model: StoreLocation },
+		});
 	} catch (error) {
 		console.log(error);
 	}
