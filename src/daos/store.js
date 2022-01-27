@@ -8,4 +8,16 @@ async function findAll() {
 	}
 }
 
-export default { findAll };
+async function findById(storeId) {
+	try {
+		return await Store.findOne({
+			where: {
+				id: storeId,
+			},
+		});
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+export default { findAll, findById };
