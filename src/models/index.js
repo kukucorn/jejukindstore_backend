@@ -1,1 +1,1 @@
-export * from './initModels';
+export * from './init-models';
