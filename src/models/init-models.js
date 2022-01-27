@@ -10,8 +10,12 @@ const initFuncs = [initStoreModel, initStoreMenuModel, initStoreLocationModel];
 
 initFuncs.forEach((func) => func(sequelize, DataTypes));
 
+export const Store = sequelize.models.Store;
+export const StoreLocation = sequelize.models.StoreLocation;
+export const StoreMenu = sequelize.models.StoreMenu;
+
+Store.Location = Store.hasOne(StoreLocation);
+
 if (process.argv[2] === 'sync') {
 	syncModels(sequelize);
 }
-
-export const Store = sequelize.models.Store;

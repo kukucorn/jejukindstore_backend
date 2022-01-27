@@ -16,14 +16,6 @@ export default (sequelize, DataTypes) => {
 			type: DataTypes.DOUBLE,
 			allowNull: false,
 		},
-		storeId: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			references: {
-				model: sequelize.models.Store,
-				key: 'id',
-			},
-		},
 	};
 
 	sequelize.define(modalName, columns, {

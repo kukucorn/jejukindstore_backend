@@ -1,4 +1,5 @@
-import { getKindStoreArray, getKindStoreLocationArray } from 'public_data/public-data-parser';
+import { getKindStoreArray, getKindStoreWithLocationArray } from 'public_data/public-data-parser';
+import { Store } from '.';
 import sequelize from '../loaders/database';
 
 export default async (sequelize) => {
@@ -16,8 +17,16 @@ export default async (sequelize) => {
 
 async function seeder() {
 	try {
-		await sequelize.models.Store.bulkCreate(await getKindStoreArray());
-		await sequelize.models.StoreLocation.bulkCreate(await getKindStoreLocationArray());
+		const kindStoreArr = await getKindStoreArray();
+		const kindStoreWithLocationArr = await getKindStoreWithLocationArray(kindStoreArr);
+
+		await sequelize.models.Store.bulkCreate(kindStoreWithLocationArr, {
+			include: [
+				{
+					association: Store.Location,
+				},
+			],
+		});
 	} catch (error) {
 		console.error(error);
 	}

@@ -38,10 +38,8 @@ export async function getKindStoreArray() {
 	return storeList;
 }
 
-export async function getKindStoreLocationArray() {
-	const kindStoreArr = await StoreDao.findAll();
-
-	const kindStoreLocationArr = await Promise.all(
+export async function getKindStoreWithLocationArray(kindStoreArr) {
+	const kindStoreWithLocationArr = await Promise.all(
 		kindStoreArr.map(async (store) => {
 			try {
 				const query = `?query=${store.address}`;
@@ -59,14 +57,18 @@ export async function getKindStoreLocationArray() {
 
 				return data
 					? {
-							storeId: store.id,
-							latitude: data?.addresses[0]?.y || 0.0,
-							longitude: data?.addresses[0]?.x || 0.0,
+							...store,
+							StoreLocation: {
+								latitude: data?.addresses[0]?.y || 0.0,
+								longitude: data?.addresses[0]?.x || 0.0,
+							},
 					  }
 					: {
-							storeId: store.id,
-							latitude: 0.0,
-							longitude: 0.0,
+							...store,
+							StoreLocation: {
+								latitude: 0.0,
+								longitude: 0.0,
+							},
 					  };
 			} catch (error) {
 				console.error(error);
@@ -74,5 +76,5 @@ export async function getKindStoreLocationArray() {
 		})
 	);
 
-	return kindStoreLocationArr;
+	return kindStoreWithLocationArr;
 }
