@@ -2,8 +2,9 @@ import express from 'express';
 
 import { StoreRouter } from 'apis';
 
+import { port } from 'configs/server';
+
 const app = express();
-const port = 3000;
 
 app.use('/store', StoreRouter);
 
