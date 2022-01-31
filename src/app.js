@@ -1,6 +1,8 @@
 import express from 'express';
-import morgan from 'morgan';
+
+import helmet from 'helmet';
 import cors from 'cors';
+import morgan from 'morgan';
 
 import { StoreRouter } from 'apis';
 
@@ -9,6 +11,7 @@ import corsOptions from 'configs/cors-options';
 
 const app = express();
 
+app.use(helmet());
 app.use(cors(corsOptions));
 app.use(morgan('dev')); // dev format is " :method :url :status :response-time ms - :res[content-length] "
 
