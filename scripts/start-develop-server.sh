@@ -2,7 +2,7 @@ git stash
 git switch develop
 git pull origin develop
 
-export NODE_ENV=test
+export NODE_ENV=development
 
 npm install
 npm run transfile
