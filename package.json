@@ -8,7 +8,7 @@
 		"start": "nodemon --exec \"babel-node ./src/app.js\"",
 		"transfile": "npx babel ./src --out-dir ./lib",
 		"syncModels": "babel-node ./src/models/init-models.js sync",
-		"sendSensitiveFiles": "powershell ./scripts/upload-gitignored.ps1"
+		"upload": "sh ./scripts/upload-gitignored.sh"
 	},
 	"repository": {
 		"type": "git",

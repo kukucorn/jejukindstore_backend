@@ -1,5 +1,5 @@
 node_modules
 src/public_data/assets
 src/configs
-scripts/configs.ps1
+scripts/configs.sh
 lib/
