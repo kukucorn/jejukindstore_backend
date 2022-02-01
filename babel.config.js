@@ -9,6 +9,7 @@ module.exports = {
 				alias: {
 					apis: './src/api-routes',
 					configs: './src/configs',
+					controllers: './src/controllers',
 					daos: './src/daos',
 					loaders: './src/loaders',
 					models: './src/models',

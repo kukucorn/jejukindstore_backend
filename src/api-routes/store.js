@@ -1,21 +1,10 @@
 import { Router } from 'express';
 
-import { StoreService } from 'services';
+import store from 'controllers/store';
 
 const router = Router();
 
-router.get('/', async (req, res, next) => {
-	const storeList = await StoreService.findAll();
-
-	res.json(storeList.map((store) => store));
-});
-
-router.get('/:storeId', async (req, res, next) => {
-	const { storeId } = req.params;
-
-	const store = await StoreService.findById(storeId);
-
-	res.json(store);
-});
+router.get('/', store.list);
+router.get('/:storeId', store.item);
 
 export default router;

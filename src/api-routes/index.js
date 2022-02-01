@@ -1,3 +1,5 @@
 import StoreRouter from './store';
 
-export { StoreRouter };
+export function registerAPIRouters(app) {
+	app.use('/api/stores', StoreRouter);
+}
