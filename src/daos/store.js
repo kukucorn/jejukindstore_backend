@@ -6,7 +6,7 @@ async function findAll() {
 			include: { model: StoreLocation },
 		});
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 	}
 }
 
@@ -18,8 +18,20 @@ async function findById(storeId) {
 			},
 		});
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 	}
 }
 
-export default { findAll, findById };
+async function findByName(name) {
+	try {
+		return await Store.findAll({
+			where: {
+				name,
+			},
+		});
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+export default { findAll, findById, findByName };

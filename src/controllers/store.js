@@ -1,9 +1,18 @@
 import { StoreService } from 'services';
 
 async function list(req, res, next) {
-	const storeList = await StoreService.findAll();
+	const { search, tag } = req.query;
 
-	res.json(storeList.map((store) => store));
+	if (search) {
+		const searchedStoreList = await StoreService.search(search);
+
+		res.json(searchedStoreList);
+	} else if (tag) {
+	} else {
+		const storeList = await StoreService.findAll();
+
+		res.json(storeList);
+	}
 }
 
 async function item(req, res, next) {

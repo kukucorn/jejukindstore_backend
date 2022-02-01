@@ -8,4 +8,8 @@ async function findById(storeId) {
 	return await StoreDao.findById(storeId);
 }
 
-export default { findAll, findById };
+async function search(name) {
+	return await StoreDao.findByName(name);
+}
+
+export default { findAll, findById, search };
