@@ -27,7 +27,7 @@ jobs:
                   port: ${{ secrets.PORT }}
                   script: |
                       cd jejukindstore/scripts
-                      sh start-test-server.sh
+                      sh start-develop-server.sh
 
     #  docker에 대한 지식이 부족해서 공부 후, 사용해보자..
     #   name: build
