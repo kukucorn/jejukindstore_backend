@@ -15,6 +15,7 @@ module.exports = {
 					models: './src/models',
 					public_data: './src/public_data',
 					services: './src/services',
+					utils: './src/utils',
 				},
 			},
 		],
