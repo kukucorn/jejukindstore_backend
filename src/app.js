@@ -19,6 +19,29 @@ app.use(compression());
 
 registerAPIRouters(app);
 
+app.use(function (req, res, next) {
+	const err = new Error('Not Found');
+	err.status = 404;
+	next(err);
+});
+
+if (process.env.NODE_ENV === 'deployment') {
+	app.use(function (err, req, res, next) {
+		res.status(err.status || 500);
+		res.json({
+			message: err.message,
+		});
+	});
+} else {
+	app.use(function (err, req, res, next) {
+		res.status(err.status || 500);
+		res.json({
+			message: err.message,
+			error: err,
+		});
+	});
+}
+
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);
 });
