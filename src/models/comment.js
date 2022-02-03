@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
-	const modalName = 'StoreLocation';
-	const tableName = 'store_location';
+	const modalName = 'Comment';
+	const tableName = 'comment';
 	const columns = {
 		id: {
 			type: DataTypes.INTEGER,
@@ -8,19 +8,23 @@ export default (sequelize, DataTypes) => {
 			autoIncrement: true,
 			primaryKey: true,
 		},
-		latitude: {
-			type: DataTypes.DOUBLE,
-			allowNull: false,
-		},
-		longitude: {
-			type: DataTypes.DOUBLE,
+		content: {
+			type: DataTypes.STRING(500),
 			allowNull: false,
 		},
 		storeId: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			references: {
-				model: sequelize.models.Store,
+				model: 'store',
+				key: 'id',
+			},
+		},
+		userId: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			references: {
+				model: 'user',
 				key: 'id',
 			},
 		},
@@ -29,6 +33,6 @@ export default (sequelize, DataTypes) => {
 	sequelize.define(modalName, columns, {
 		tableName,
 		underscored: true,
-		timestamps: false,
+		timestamps: true,
 	});
 };
