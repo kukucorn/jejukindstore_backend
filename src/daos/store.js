@@ -3,7 +3,7 @@ import { Store, StoreLocation } from 'models';
 async function findAll() {
 	try {
 		return await Store.findAll({
-			include: { model: StoreLocation },
+			include: { model: StoreLocation, as: 'store_location' },
 		});
 	} catch (error) {
 		console.error(error);
