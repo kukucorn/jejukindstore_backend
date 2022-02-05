@@ -13,12 +13,13 @@ export default (sequelize, DataTypes) => {
 			allowNull: false,
 		},
 		type: {
-			type: DataTypes.STRING(10),
+			type: DataTypes.STRING(20),
 			allowNull: false,
 		},
-		googleId: {
+		thirdAppId: {
 			type: DataTypes.STRING(200),
 			allowNull: true,
+			comment: 'id in third application',
 		},
 	};
 

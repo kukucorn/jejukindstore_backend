@@ -1,3 +1,4 @@
 import StoreDao from './store';
+import UserDao from './user';
 
-export { StoreDao };
+export { StoreDao, UserDao };
