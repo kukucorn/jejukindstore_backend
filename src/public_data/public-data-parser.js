@@ -55,21 +55,11 @@ export async function getKindStoreWithLocationArray(kindStoreArr) {
 
 				const data = await res.json();
 
-				return data
-					? {
-							...store,
-							StoreLocation: {
-								latitude: data?.addresses[0]?.y || 0.0,
-								longitude: data?.addresses[0]?.x || 0.0,
-							},
-					  }
-					: {
-							...store,
-							StoreLocation: {
-								latitude: 0.0,
-								longitude: 0.0,
-							},
-					  };
+				return {
+					latitude: data?.addresses[0]?.y || 0.0,
+					longitude: data?.addresses[0]?.x || 0.0,
+					storeId: store.id,
+				};
 			} catch (error) {
 				console.error(error);
 			}
