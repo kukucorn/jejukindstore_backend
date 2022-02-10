@@ -1,11 +1,13 @@
 import StoreRouter from './store';
 import AuthRouter from './auth';
+import UserRouter from './user';
 
 import { isDeploymentEnv } from 'utils/env-util';
 
 export function registerAPIRouters(app) {
 	app.use('/api/stores', StoreRouter);
 	app.use('/api/auth', AuthRouter);
+	app.use('/api/users', UserRouter);
 }
 
 export function registerErrorHandler(app) {
