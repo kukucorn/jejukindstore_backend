@@ -14,7 +14,7 @@ passport.use(
 		},
 		async function (accessToken, refreshToken, profile, cb) {
 			try {
-				const [user, created] = await UserService.findOrCreate({ name: profile.displayName, type: 'google_auth', thirdAppId: profile.id });
+				const [user, created] = await UserService.findOrCreate({ name: profile.displayName, type: 'google', thirdAppId: profile.id });
 				return cb(null, user);
 			} catch (error) {
 				return cb(error, null);
@@ -44,4 +44,12 @@ function googleLoginCallback() {
 	return passport.authenticate('google', { failureRedirect: '/login', failureMessage: true });
 }
 
-export default { googleLogin, googleLoginCallback };
+function validateUser(req, res, next) {
+	if (req.user) {
+		next();
+	} else {
+		res.redirect('/login');
+	}
+}
+
+export default { googleLogin, googleLoginCallback, validateUser };
